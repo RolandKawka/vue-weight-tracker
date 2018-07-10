@@ -1,11 +1,22 @@
 <template>
     <form v-on:submit.prevent="onSubmit" class="measure-form">
       <label for="weight">Weight</label>
-      <input required type="number" min="0" max="200" name="weight" v-model="weight">
-      <label for="comment">Comment</label>
-      <input required type="text" name="comment" v-model="comment">
+      <input
+        required
+        type="number"
+        min="0"
+        max="200"
+        name="weight"
+        v-model="weight"
+      >
       <label for="date">Date of measure</label>
-      <input required type="date" name="date" v-model="date">
+      <input
+        required
+        type="date"
+        name="date"
+        v-model="date"
+        v-bind:max="maxDate"
+      >
       <button type="submit">Submit</button>
     </form>
 </template>
@@ -18,8 +29,8 @@ export default {
   data() {
     return {
       weight: null,
-      comment: null,
       date: null,
+      maxDate: moment().format('YYYY-MM-DD'),
     };
   },
   methods: {
@@ -29,7 +40,6 @@ export default {
         'addMeasure',
         {
           weight: this.weight,
-          comment: this.comment,
           date: moment(this.date).format('DD/MM/YYYY'),
         },
       );
@@ -38,7 +48,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   .measure-form {
     display: flex;
@@ -50,5 +59,8 @@ export default {
   }
   input {
     width: 200px;
+  }
+  button[type="submit"] {
+    margin-top: 20px;
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div>
+    <h1>Your measurements:</h1>
     <div
       v-bind:key="measure.id"
       v-for="measure of measurements"
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Measurements',
   data() {
     return {
       measurements: this.$store.state.measurements,
@@ -23,8 +23,3 @@ export default {
   },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-
-</style>
